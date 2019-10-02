@@ -1,0 +1,15 @@
+[remap]
+
+importer="pointcloud importer"
+type="ArrayMesh"
+path="res://.import/monu10.ply-b0f4032c3ea7690f23459dce92441cdd.mesh"
+
+[deps]
+
+source_file="res://monu10.ply"
+dest_files=[ "res://.import/monu10.ply-b0f4032c3ea7690f23459dce92441cdd.mesh" ]
+
+[params]
+
+point_scale=12
+scale_factor=10
