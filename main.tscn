@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://monu10.ply" type="ArrayMesh" id=1]
 
@@ -25,9 +25,61 @@ script/source = "extends AnimationPlayer;
 func _ready():
 	play(\"Rotate\");"
 
+[sub_resource type="GDScript" id=3]
+script/source = "extends Label
+
+func _process(delta):
+	text = \"Frame time (ms): \" + String((Performance.get_monitor(Performance.TIME_PROCESS) * 1000)) + \"\\nFPS: \" + String((Performance.get_monitor(Performance.TIME_FPS)))
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Label
+
+func _process(delta):
+	text = \"Verts: \" + String((Performance.get_monitor(Performance.RENDER_VERTICES_IN_FRAME))) + \"\\nDraw calls: \" + String((Performance.get_monitor(Performance.RENDER_DRAW_CALLS_IN_FRAME)))"
+
 [node name="SceneRoot" type="Spatial"]
 
+[node name="Models" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="monu10" type="MeshInstance" parent="Models"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="monu11" type="MeshInstance" parent="Models"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -2, -10 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="monu12" type="MeshInstance" parent="Models"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -2, 10 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="monu13" type="MeshInstance" parent="Models"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10, -2, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="monu14" type="MeshInstance" parent="Models"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10, -2, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="monu15" type="MeshInstance" parent="Models"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 12, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="monu16" type="MeshInstance" parent="Models"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -16, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
 [node name="CameraRig" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraRig"]
@@ -41,16 +93,36 @@ anims/Rotate = SubResource( 1 )
 script = SubResource( 2 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78198, 1.81319, 0 )
 light_color = Color( 0, 0, 1, 1 )
 light_energy = 10.0
+omni_range = 6.0
 
 [node name="OmniLight2" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0 )
 light_color = Color( 1, 0, 0, 1 )
 light_energy = 10.0
+omni_range = 6.0
 
-[node name="monu10" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-mesh = ExtResource( 1 )
-material/0 = null
+[node name="Debug UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="FrameTime" type="Label" parent="Debug UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 230.0
+margin_bottom = 60.0
+text = "Frame time (MS): 0.00
+FPS: 00"
+script = SubResource( 3 )
+
+[node name="3D debug" type="Label" parent="Debug UI"]
+margin_left = 20.0
+margin_top = 70.0
+margin_right = 230.0
+margin_bottom = 160.0
+text = "Verts: 0
+Draw calls: 0
+"
+script = SubResource( 4 )

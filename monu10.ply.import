@@ -11,5 +11,5 @@ dest_files=[ "res://.import/monu10.ply-b0f4032c3ea7690f23459dce92441cdd.mesh" ]
 
 [params]
 
-point_scale=12
+point_scale=14
 scale_factor=10
