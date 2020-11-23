@@ -40,50 +40,50 @@ func _process(delta):
 
 [node name="SceneRoot" type="Spatial"]
 
-[node name="Models" type="Spatial" parent="."]
-editor/display_folded = true
+[node name="VoxelObjects" type="Spatial" parent="."]
 
-[node name="monu10" type="MeshInstance" parent="Models"]
+[node name="Models" type="Spatial" parent="VoxelObjects"]
+
+[node name="monu10" type="MeshInstance" parent="VoxelObjects/Models"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="monu11" type="MeshInstance" parent="Models"]
+[node name="monu11" type="MeshInstance" parent="VoxelObjects/Models"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -2, -10 )
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="monu12" type="MeshInstance" parent="Models"]
+[node name="monu12" type="MeshInstance" parent="VoxelObjects/Models"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -2, 10 )
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="monu13" type="MeshInstance" parent="Models"]
+[node name="monu13" type="MeshInstance" parent="VoxelObjects/Models"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10, -2, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="monu14" type="MeshInstance" parent="Models"]
+[node name="monu14" type="MeshInstance" parent="VoxelObjects/Models"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10, -2, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="monu15" type="MeshInstance" parent="Models"]
+[node name="monu15" type="MeshInstance" parent="VoxelObjects/Models"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 12, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="monu16" type="MeshInstance" parent="Models"]
+[node name="monu16" type="MeshInstance" parent="VoxelObjects/Models"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -16, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="CameraRig" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraRig"]
-transform = Transform( 1, 0, 0, 0, 1, -1.49012e-008, 0, 1.49012e-008, 1, 0, 1, 15 )
+transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 1, 15 )
 fov = 90.0
 size = 20.0
 
@@ -116,6 +116,9 @@ margin_bottom = 60.0
 text = "Frame time (MS): 0.00
 FPS: 00"
 script = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="3D debug" type="Label" parent="Debug UI"]
 margin_left = 20.0

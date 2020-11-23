@@ -15,7 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="PointCloudRenderTest"
+config/name="Godot-Point-Cloud-Render"
+config/description="A project created to test a PLY point cloud importer. (For voxel models exported via MagicaVoxel)"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 

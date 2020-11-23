@@ -4,22 +4,22 @@ extends EditorImportPlugin
 enum Presets {PRESET_DEFAULT}
 
 func get_importer_name():
-	    return "pointcloud importer"
+		return "pointcloud importer"
 
 func get_visible_name():
 	return "Point Cloud"
 
 func get_recognized_extensions():
-	    return ["ply"]
+		return ["ply"]
 
 func get_save_extension():
-	    return "mesh"
+		return "mesh"
 
 func get_resource_type():
-	    return "ArrayMesh"
+		return "ArrayMesh"
 
 func get_preset_count():
-	    return Presets.size()
+		return Presets.size()
 
 func get_preset_name(preset):
 	match preset:
@@ -45,7 +45,7 @@ func get_import_options(preset):
 			return []
 
 func get_option_visibility(option, options):
-    return true
+	return true
 
 func import(source_file, save_path, options, platform_variants, gen_files):
 	var plyFile = File.new()
@@ -61,6 +61,7 @@ func import(source_file, save_path, options, platform_variants, gen_files):
 	while line != "end_header":
 		line = plyFile.get_line()
 		continue
+		
 	while not plyFile.eof_reached():
 		line = plyFile.get_line()
 		if line == "":
@@ -69,6 +70,7 @@ func import(source_file, save_path, options, platform_variants, gen_files):
 		if data.size() != 6:
 			return ERR_PARSE_ERROR
 		meshBuilder.add_color(Color8(int(data[3]),int(data[4]),int(data[5])))
+		meshBuilder.add_normal(Vector3.UP)
 		meshBuilder.add_vertex(Vector3(float(data[0])/options.scale_factor,
 										float(data[2])/options.scale_factor,
 										float(data[1])/options.scale_factor))
