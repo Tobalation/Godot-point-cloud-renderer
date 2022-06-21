@@ -116,9 +116,6 @@ margin_bottom = 60.0
 text = "Frame time (MS): 0.00
 FPS: 00"
 script = SubResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="3D debug" type="Label" parent="Debug UI"]
 margin_left = 20.0

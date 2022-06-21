@@ -33,8 +33,8 @@ func get_import_options(preset):
 		Presets.PRESET_DEFAULT:
 			return [{
 					"name": "point_scale",
-					"default_value": 12,
-					"hint_string": "Scale for shader point size."
+					"default_value": 100,
+					"hint_string": "Scale for shader point size. Default is double of model scale factor."
 					},
 					{
 					"name": "scale_factor",
@@ -74,11 +74,10 @@ func import(source_file, save_path, options, platform_variants, gen_files):
 		meshBuilder.add_vertex(Vector3(float(data[0])/options.scale_factor,
 										float(data[2])/options.scale_factor,
 										float(data[1])/options.scale_factor))
+	meshBuilder.index()
 	var arrayMesh = meshBuilder.commit()
-	var shaderProg = preload("./pointCloud.shader")
-	var mat = ShaderMaterial.new()
-	mat.shader = shaderProg
-	mat.set_shader_param("point_scale",options.point_scale)
-	arrayMesh.surface_set_material(0,mat)
+	var shaderMaterial = preload("./pointCloud.material")
+	shaderMaterial.set_shader_param("point_scale",options.point_scale)
+	arrayMesh.surface_set_material(0,shaderMaterial)
 	plyFile.close()
 	return ResourceSaver.save("%s.%s" % [save_path, get_save_extension()], arrayMesh)
