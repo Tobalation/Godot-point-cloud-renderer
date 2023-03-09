@@ -33,12 +33,12 @@ func get_import_options(preset):
 		Presets.PRESET_DEFAULT:
 			return [{
 					"name": "point_scale",
-					"default_value": 100,
+					"default_value": 0.2,
 					"hint_string": "Scale for shader point size. Default is double of model scale factor."
 					},
 					{
 					"name": "scale_factor",
-					"default_value": 10,
+					"default_value": 0.1,
 					"hint_string": "Amount the coordinates in the file will be divided by."
 					}]
 		_:
@@ -71,9 +71,9 @@ func import(source_file, save_path, options, platform_variants, gen_files):
 			return ERR_PARSE_ERROR
 		meshBuilder.add_color(Color8(int(data[3]),int(data[4]),int(data[5])))
 		meshBuilder.add_normal(Vector3.UP)
-		meshBuilder.add_vertex(Vector3(float(data[0])/options.scale_factor,
-										float(data[2])/options.scale_factor,
-										float(data[1])/options.scale_factor))
+		meshBuilder.add_vertex(Vector3(float(data[0])*options.scale_factor,
+										float(data[2])*options.scale_factor,
+										float(data[1])*options.scale_factor))
 	meshBuilder.index()
 	var arrayMesh = meshBuilder.commit()
 	var shaderMaterial = preload("./pointCloud.material")

@@ -69,7 +69,6 @@ material/0 = SubResource( 4 )
 
 [node name="monu10" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
-material/0 = null
 
 [node name="CameraRig" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0 )
